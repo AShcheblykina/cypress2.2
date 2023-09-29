@@ -22,7 +22,7 @@ describe("pet store", () => {
       name: "Dogg",
       photoUrls: [],
     }).then((response) => {
-      expect(response.status).be.eq(200);
+      expect(response.status).be.eql(200);
       expect(response.body).be.eql({
         id: 300,
         tags: [],
@@ -30,12 +30,10 @@ describe("pet store", () => {
         photoUrls: [],
       });
     });
-    cy.request("DELETE", "https://petstore.swagger.io/v2/pet/", {
+    cy.request("DELETE", "https://petstore.swagger.io/v2/pet/300", {
       id: 300,
-      name: "Dogg",
-      photoUrls: [],
     }).then((response) => {
-      expect(response.status).be.eql(404);
+      expect(response.status).be.eq(200);
     });
   });
 });
